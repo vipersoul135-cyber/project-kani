@@ -133,7 +133,8 @@
             position: relative;
             z-index: 5;
 
-            width: min(1050px, 95vw);
+            width: min(1050px, 94vw);
+            padding: 18px 0;
 
             display: flex;
             flex-direction: column;
@@ -191,7 +192,7 @@
             position: relative;
 
             width: 100%;
-            height: min(500px, 60vh);
+            height: min(500px, 58vh);
 
             min-height: 350px;
 
@@ -211,6 +212,7 @@
 
         video {
             width: 100%;
+            max-width: none;
             height: 100%;
 
             object-fit: cover;
@@ -659,7 +661,9 @@
 
             position: relative;
 
-            width: min(480px, 95vw);
+            width: min(480px, 92vw);
+            max-height: 92vh;
+            overflow-y: auto;
 
             padding: 25px;
 
@@ -737,42 +741,448 @@
             }
         }
 
-
-        /* image */
-
-        .princess-image {
-
-            width: 245px;
-            height: 290px;
-
-            object-fit: cover;
-
-            border-radius: 28px;
-
-            border: 3px solid rgba(240, 202, 255, .8);
-
+        to {
             box-shadow:
-                0 0 25px rgba(211, 127, 255, .65),
-                0 0 70px rgba(182, 89, 255, .25);
-
-            margin-bottom: 20px;
-
-            animation: imageGlow 3s infinite alternate;
+                0 0 40px rgba(235, 169, 255, .9);
         }
 
-        @keyframes imageGlow {
+        /* =========================================
+           CINDERELLA-STYLE MAGICAL ANIMATION
+        ========================================= */
+        .cinderella-animation {
+            position: relative;
+            width: min(230px, 72vw);
+            height: min(180px, 30vh);
+            min-height: 145px;
+            margin: 2px auto 18px;
+            border-radius: 28px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 38%, rgba(255, 255, 255, .24), transparent 28%),
+                linear-gradient(145deg, rgba(157, 91, 255, .30), rgba(25, 10, 43, .85));
+            border: 1px solid rgba(245, 218, 255, .38);
+            box-shadow: 0 0 35px rgba(194, 116, 255, .3);
+        }
 
-            from {
-                box-shadow:
-                    0 0 20px rgba(211, 127, 255, .5);
-            }
+        .cinderella-animation .moon {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            right: 18px;
+            top: 15px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0%, #ead7ff 48%, rgba(217, 164, 255, .08) 72%, transparent 74%);
+            animation: moonFloat 3s ease-in-out infinite alternate;
+        }
 
+        .cinderella-animation .castle {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            width: 145px;
+            height: 70px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #8f5bb5, #e4b9ff, #8f5bb5);
+            clip-path: polygon(0 100%, 0 48%, 12% 48%, 12% 24%, 20% 24%, 20% 48%,
+                    34% 48%, 34% 10%, 43% 10%, 43% 48%, 57% 48%,
+                    57% 18%, 65% 18%, 65% 48%, 80% 48%, 80% 27%,
+                    88% 27%, 88% 48%, 100% 48%, 100% 100%);
+            opacity: .72;
+            filter: drop-shadow(0 0 12px rgba(230, 181, 255, .55));
+        }
+
+        .cinderella-animation .princess {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            width: 66px;
+            height: 130px;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: princessFloat 2.8s ease-in-out infinite;
+        }
+
+        .princess .head {
+            position: absolute;
+            width: 27px;
+            height: 27px;
+            left: 20px;
+            top: 0;
+            border-radius: 50%;
+            background: #fff4ff;
+            box-shadow: 0 0 18px #fff;
+        }
+
+        .princess .dress {
+            position: absolute;
+            left: 4px;
+            bottom: 0;
+            width: 58px;
+            height: 95px;
+            background: linear-gradient(145deg, #e8c9ff, #9e68dc, #f2dcff);
+            clip-path: polygon(42% 0, 58% 0, 63% 28%, 100% 100%, 0 100%, 37% 28%);
+            filter: drop-shadow(0 0 14px rgba(220, 174, 255, .65));
+        }
+
+        .princess .arm {
+            position: absolute;
+            width: 43px;
+            height: 7px;
+            top: 45px;
+            background: #fff0ff;
+            border-radius: 10px;
+            z-index: 2;
+        }
+
+        .princess .arm.left {
+            left: -1px;
+            transform: rotate(20deg)
+        }
+
+        .princess .arm.right {
+            right: -1px;
+            transform: rotate(-20deg)
+        }
+
+        .spark {
+            position: absolute;
+            color: #fff;
+            font-size: 15px;
+            z-index: 4;
+            animation: sparkle 1.8s infinite;
+        }
+
+        .spark.s1 {
+            left: 20px;
+            top: 30px
+        }
+
+        .spark.s2 {
+            right: 45px;
+            top: 82px;
+            animation-delay: .5s
+        }
+
+        .spark.s3 {
+            left: 52px;
+            top: 92px;
+            animation-delay: 1s
+        }
+
+        @keyframes moonFloat {
             to {
-                box-shadow:
-                    0 0 40px rgba(235, 169, 255, .9);
+                transform: translateY(-7px)
             }
         }
 
+        @keyframes princessFloat {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0)
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-6px)
+            }
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: .25;
+                transform: scale(.7) rotate(0)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.35) rotate(25deg)
+            }
+        }
+
+        /* =========================================
+           SCAN COUNT + DISCOVERY PANEL
+        ========================================= */
+        .scan-counter {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(236, 202, 255, .2);
+            color: #eadcff;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .scan-counter strong {
+            color: #fff;
+            font-size: 14px
+        }
+
+        .discovery-title {
+            margin-top: 14px;
+            color: #f2ddff;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: .4px;
+        }
+
+        @media(max-width:600px) {
+            body {
+                overflow: auto;
+                min-height: 100svh
+            }
+
+            .app {
+                width: 94vw;
+                min-height: 100svh;
+                justify-content: center;
+                padding: 14px 0 24px;
+            }
+
+            .logo {
+                font-size: 10px;
+                letter-spacing: 3px;
+                margin-bottom: 5px
+            }
+
+            .title {
+                font-size: clamp(28px, 8vw, 40px);
+                line-height: 1.05
+            }
+
+            .subtitle {
+                font-size: 12px;
+                line-height: 1.45;
+                margin: 7px auto 15px;
+                max-width: 330px
+            }
+
+            .scanner-wrapper {
+                width: 100%
+            }
+
+            .camera-container {
+                width: 100%;
+                height: min(58svh, 470px);
+                min-height: 330px;
+                border-radius: 24px;
+            }
+
+            .face-guide {
+                width: 205px;
+                height: 270px
+            }
+
+            .face-info {
+                left: 12px;
+                bottom: 12px;
+                font-size: 8px
+            }
+
+            .progress-area {
+                right: 12px;
+                bottom: 12px;
+                width: 115px
+            }
+
+            .top-data {
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                font-size: 8px
+            }
+
+            .status {
+                font-size: 13px;
+                margin-top: 11px;
+                min-height: 24px
+            }
+
+            .start-button {
+                margin-top: 9px;
+                padding: 13px 24px;
+                font-size: 14px
+            }
+
+            .result {
+                padding: 10px
+            }
+
+            .magic-card {
+                width: 92vw;
+                max-height: 92svh;
+                padding: 20px 16px 16px;
+                border-radius: 26px;
+            }
+
+            .cinderella-animation {
+                width: min(205px, 68vw);
+                height: 145px;
+                min-height: 0;
+                margin-bottom: 13px;
+            }
+
+            .cinderella-animation .castle {
+                transform: translateX(-50%) scale(.85);
+                transform-origin: bottom center
+            }
+
+            .cinderella-animation .princess {
+                transform: translateX(-50%) scale(.85);
+                transform-origin: bottom center
+            }
+
+            .magic-card h2 {
+                font-size: 23px;
+                margin-bottom: 9px
+            }
+
+            .message {
+                font-size: 14px;
+                line-height: 1.6;
+                min-height: 80px
+            }
+
+            .result-buttons {
+                margin-top: 13px
+            }
+
+            .result-button {
+                padding: 10px 18px;
+                font-size: 13px
+            }
+
+            .crown {
+                font-size: 38px;
+                top: -29px
+            }
+
+            .scan-counter {
+                font-size: 10px;
+                padding: 6px 11px
+            }
+        }
+
+        @media(max-width:380px) {
+            .camera-container {
+                min-height: 300px;
+                height: 54svh
+            }
+
+            .face-guide {
+                width: 180px;
+                height: 235px
+            }
+
+            .face-info {
+                display: none
+            }
+
+            .progress-area {
+                width: 105px
+            }
+
+            .cinderella-animation {
+                height: 130px
+            }
+
+            .magic-card {
+                padding: 18px 13px 13px
+            }
+
+            .message {
+                font-size: 13px
+            }
+        }
+
+
+        /* =========================================
+           CAPTURED FACE PHOTO
+        ========================================= */
+        .captured-face-wrap {
+            width: 100%;
+            margin: 0 auto 14px;
+            text-align: center;
+        }
+
+        .captured-label {
+            font-family: monospace;
+            font-size: 10px;
+            letter-spacing: 1.8px;
+            color: #dcb9f5;
+            margin-bottom: 7px;
+        }
+
+        .captured-photo-frame {
+            position: relative;
+            width: min(250px, 72vw);
+            height: min(165px, 24vh);
+            min-height: 125px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 22px;
+            border: 2px solid rgba(238, 205, 255, .65);
+            background: #09040f;
+            box-shadow:
+                0 0 20px rgba(204, 124, 255, .45),
+                inset 0 0 20px rgba(255, 255, 255, .06);
+        }
+
+        #capturedFace {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1);
+        }
+
+        .photo-shine {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(115deg,
+                    transparent 20%,
+                    rgba(255, 255, 255, .18) 45%,
+                    transparent 60%);
+            transform: translateX(-120%);
+            animation: photoShine 2.5s ease-in-out infinite;
+        }
+
+        @keyframes photoShine {
+
+            0%,
+            45% {
+                transform: translateX(-120%)
+            }
+
+            70%,
+            100% {
+                transform: translateX(120%)
+            }
+        }
+
+        @media(max-width:600px) {
+            .captured-face-wrap {
+                margin-bottom: 10px
+            }
+
+            .captured-label {
+                font-size: 8px;
+                letter-spacing: 1.2px
+            }
+
+            .captured-photo-frame {
+                width: min(220px, 68vw);
+                height: 135px;
+                min-height: 110px;
+                border-radius: 18px;
+            }
+        }
 
         /* heading */
 
@@ -946,17 +1356,454 @@
                 width: 120px;
             }
 
-            .princess-image {
-                width: 190px;
-                height: 230px;
-            }
-
             .magic-card {
                 padding: 20px;
             }
 
             .magic-card h2 {
                 font-size: 26px;
+            }
+        }
+
+        /* =====================================================
+           FINAL RESPONSIVE SYSTEM
+           Small phones • Android • iPhone • tablets • desktop
+           Portrait + landscape • no horizontal scrolling
+        ===================================================== */
+
+        html {
+            width: 100%;
+            min-width: 0;
+            overflow-x: hidden;
+            background: #0b0615;
+        }
+
+        body {
+            width: 100%;
+            min-width: 0;
+            min-height: 100svh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior-x: none;
+        }
+
+        *,
+        *::before,
+        *::after {
+            max-width: 100%;
+        }
+
+        .app {
+            width: min(1050px, calc(100% - 24px));
+            min-height: 100svh;
+            min-height: 100dvh;
+            padding:
+                max(14px, env(safe-area-inset-top)) 0 max(18px, env(safe-area-inset-bottom));
+        }
+
+        .title {
+            font-size: clamp(28px, 5vw, 55px);
+            line-height: 1.08;
+        }
+
+        .subtitle {
+            width: min(620px, 92vw);
+            font-size: clamp(12px, 1.8vw, 15px);
+            line-height: 1.5;
+        }
+
+        .scanner-wrapper {
+            width: min(720px, 100%);
+        }
+
+        .camera-container {
+            width: 100%;
+            height: clamp(300px, 60svh, 500px);
+            height: clamp(300px, 60dvh, 500px);
+            min-height: 0;
+            max-height: calc(100dvh - 170px);
+            border-radius: clamp(20px, 4vw, 35px);
+        }
+
+        .face-guide {
+            width: clamp(175px, 39vw, 285px);
+            height: clamp(230px, 49vw, 365px);
+            max-height: 82%;
+        }
+
+        .top-data {
+            font-size: clamp(8px, 1.2vw, 11px);
+        }
+
+        .face-info {
+            font-size: clamp(8px, 1.2vw, 11px);
+        }
+
+        .progress-area {
+            width: clamp(105px, 18vw, 160px);
+        }
+
+        .status {
+            width: min(680px, 94vw);
+            font-size: clamp(12px, 1.8vw, 16px);
+            line-height: 1.45;
+        }
+
+        .start-button {
+            max-width: 92vw;
+            min-height: 46px;
+            padding: clamp(12px, 2vw, 15px) clamp(22px, 5vw, 35px);
+            font-size: clamp(13px, 1.8vw, 15px);
+        }
+
+        .result {
+            width: 100%;
+            min-height: 100svh;
+            min-height: 100dvh;
+            padding:
+                max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .magic-card {
+            width: min(480px, 94vw);
+            max-width: 94vw;
+            max-height: calc(100dvh - 24px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: clamp(16px, 4vw, 25px);
+            border-radius: clamp(22px, 5vw, 35px);
+        }
+
+        .magic-card h2 {
+            font-size: clamp(22px, 5vw, 31px);
+            line-height: 1.15;
+        }
+
+        .message {
+            font-size: clamp(13px, 2vw, 16px);
+            line-height: 1.65;
+            overflow-wrap: anywhere;
+        }
+
+        .captured-face-wrap {
+            width: 100%;
+        }
+
+        .captured-photo-frame {
+            width: min(250px, 72vw);
+            height: clamp(110px, 24vw, 165px);
+        }
+
+        .cinderella-animation {
+            width: min(230px, 70vw);
+            height: clamp(125px, 28vw, 180px);
+        }
+
+        .result-buttons {
+            width: 100%;
+            max-width: 100%;
+            gap: 8px;
+        }
+
+        .result-button {
+            flex: 0 1 auto;
+            min-width: 110px;
+            max-width: 100%;
+            min-height: 42px;
+            padding: 10px 16px;
+            font-size: clamp(12px, 1.8vw, 14px);
+        }
+
+        /* ---------------- SMALL PHONES ---------------- */
+        @media (max-width:480px) {
+
+            .app {
+                width: calc(100% - 18px);
+                padding-top: max(10px, env(safe-area-inset-top));
+            }
+
+            .logo {
+                font-size: 9px;
+                letter-spacing: 2.5px;
+                margin-bottom: 4px;
+            }
+
+            .title {
+                font-size: clamp(25px, 8vw, 34px);
+                letter-spacing: -.5px;
+            }
+
+            .subtitle {
+                margin: 6px auto 11px;
+                font-size: 12px;
+            }
+
+            .camera-container {
+                height: clamp(285px, 57svh, 430px);
+                height: clamp(285px, 57dvh, 430px);
+                max-height: calc(100dvh - 150px);
+                border-radius: 22px;
+            }
+
+            .face-guide {
+                width: clamp(165px, 52vw, 215px);
+                height: clamp(220px, 68vw, 285px);
+            }
+
+            .top-data {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                font-size: 7px;
+            }
+
+            .face-info {
+                left: 10px;
+                bottom: 10px;
+                font-size: 7px;
+                line-height: 1.55;
+            }
+
+            .progress-area {
+                right: 10px;
+                bottom: 10px;
+                width: 100px;
+            }
+
+            .progress-label {
+                font-size: 8px;
+            }
+
+            .status {
+                margin-top: 9px;
+                min-height: 23px;
+                font-size: 12px;
+            }
+
+            .scan-counter {
+                margin-top: 5px;
+                font-size: 9px;
+                padding: 6px 10px;
+            }
+
+            .start-button {
+                margin-top: 7px;
+                width: min(250px, 88vw);
+                font-size: 13px;
+                padding: 12px 20px;
+            }
+
+            .magic-card {
+                width: 94vw;
+                max-width: 94vw;
+                max-height: calc(100dvh - 20px);
+                padding: 16px 12px 13px;
+            }
+
+            .crown {
+                top: -27px;
+                font-size: 34px;
+            }
+
+            .captured-label {
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+
+            .captured-photo-frame {
+                width: min(210px, 68vw);
+                height: clamp(105px, 35vw, 135px);
+                border-radius: 17px;
+            }
+
+            .cinderella-animation {
+                width: min(200px, 65vw);
+                height: clamp(115px, 31vw, 140px);
+                min-height: 0;
+                margin-bottom: 10px;
+            }
+
+            .cinderella-animation .castle {
+                transform: translateX(-50%) scale(.78);
+                transform-origin: bottom center;
+            }
+
+            .cinderella-animation .princess {
+                transform: translateX(-50%) scale(.76);
+                transform-origin: bottom center;
+            }
+
+            .magic-card h2 {
+                font-size: clamp(20px, 6.5vw, 25px);
+                margin-bottom: 7px;
+            }
+
+            .discovery-title {
+                font-size: 11px;
+                line-height: 1.4;
+                margin-top: 5px;
+            }
+
+            .message {
+                min-height: 70px;
+                font-size: 12.5px;
+                line-height: 1.55;
+            }
+
+            .result-buttons {
+                margin-top: 9px;
+            }
+
+            .result-button {
+                min-width: 0;
+                flex: 1 1 45%;
+                padding: 9px 10px;
+                font-size: 12px;
+            }
+        }
+
+        /* ---------------- VERY SMALL PHONES ---------------- */
+        @media (max-width:360px) {
+
+            .app {
+                width: calc(100% - 12px);
+            }
+
+            .camera-container {
+                height: clamp(270px, 54svh, 350px);
+                height: clamp(270px, 54dvh, 350px);
+            }
+
+            .face-guide {
+                width: 165px;
+                height: 215px;
+            }
+
+            .face-info {
+                display: none;
+            }
+
+            .progress-area {
+                width: 90px;
+                right: 8px;
+                bottom: 8px;
+            }
+
+            .magic-card {
+                padding: 14px 10px 11px;
+            }
+
+            .captured-photo-frame {
+                width: 190px;
+                height: 105px;
+            }
+
+            .cinderella-animation {
+                width: 180px;
+                height: 110px;
+            }
+
+            .magic-card h2 {
+                font-size: 20px;
+            }
+
+            .message {
+                font-size: 12px;
+            }
+        }
+
+        /* ---------------- LANDSCAPE PHONES ---------------- */
+        @media (orientation:landscape) and (max-height:600px) {
+
+            .app {
+                min-height: auto;
+                padding-top: 8px;
+                padding-bottom: 12px;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .title {
+                font-size: clamp(22px, 5vh, 32px);
+            }
+
+            .subtitle {
+                margin: 3px auto 7px;
+                font-size: 10px;
+            }
+
+            .camera-container {
+                height: calc(100dvh - 115px);
+                max-height: 430px;
+            }
+
+            .face-guide {
+                height: min(78%, 255px);
+                width: min(185px, 28vw);
+            }
+
+            .status {
+                margin-top: 5px;
+                min-height: 18px;
+                font-size: 11px;
+            }
+
+            .scan-counter {
+                margin-top: 3px;
+                padding: 4px 9px;
+            }
+
+            .start-button {
+                margin-top: 4px;
+                min-height: 38px;
+                padding: 8px 20px;
+            }
+
+            .result {
+                align-items: flex-start;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            .magic-card {
+                max-height: calc(100dvh - 16px);
+                padding: 12px 16px;
+            }
+
+            .captured-photo-frame {
+                height: 105px;
+            }
+
+            .cinderella-animation {
+                height: 100px;
+                margin-bottom: 6px;
+            }
+
+            .message {
+                min-height: 40px;
+                line-height: 1.4;
+            }
+
+            .crown {
+                display: none;
+            }
+        }
+
+        /* ---------------- iPHONE SAFE AREA ---------------- */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+
+            .app {
+                padding-left: max(0px, env(safe-area-inset-left));
+                padding-right: max(0px, env(safe-area-inset-right));
             }
         }
     </style>
@@ -1020,6 +1867,7 @@
             <div class="camera-container">
 
                 <video id="camera" autoplay playsinline muted></video>
+                <canvas id="captureCanvas" hidden></canvas>
 
                 <div class="camera-dark"></div>
 
@@ -1098,6 +1946,9 @@
         <div class="status" id="status">
             Camera is waiting...
         </div>
+        <div class="scan-counter">
+            👑 Magical scans: <strong id="scanCount">0</strong>
+        </div>
 
 
         <button class="start-button" id="startButton">
@@ -1122,14 +1973,38 @@
             </div>
 
 
-            <img src="img/bfdc724276a5c59d8303af967d981614.jpg" class="princess-image" alt="Beautiful Cinderella">
 
 
-            <h2>
-                ✨ Cinderella Found ✨
+            <div class="captured-face-wrap" id="capturedFaceWrap">
+                <div class="captured-label">📸 YOUR MAGICAL SCAN</div>
+                <div class="captured-photo-frame">
+                    <img id="capturedFace" alt="Captured face from magical scan">
+                    <div class="photo-shine"></div>
+                </div>
+            </div>
+
+            <div class="cinderella-animation" aria-label="Magical heroine animation">
+                <div class="moon"></div>
+                <div class="castle"></div>
+                <div class="princess">
+                    <span class="head"></span>
+                    <span class="arm left"></span>
+                    <span class="arm right"></span>
+                    <span class="dress"></span>
+                </div>
+                <span class="spark s1">✦</span>
+                <span class="spark s2">✧</span>
+                <span class="spark s3">✦</span>
+            </div>
+
+            <h2 id="heroineTitle">
+                ✨ Magical Heroine Found ✨
             </h2>
 
 
+            <div class="discovery-title" id="discoveryTitle">
+                ✨ Scan #1 — A new magical discovery
+            </div>
             <div class="message" id="message">
             </div>
 
@@ -1137,13 +2012,15 @@
             <div class="result-buttons">
 
                 <button class="result-button continue" onclick="closeResult()">
-
                     💖 Continue
+                </button>
 
+                <button class="result-button again" onclick="scanAgain()">
+                    🔄 Scan Again
                 </button>
 
 
-               
+
             </div>
 
         </div>
@@ -1166,6 +2043,12 @@
 
         const video =
             document.getElementById("camera");
+
+        const captureCanvas =
+            document.getElementById("captureCanvas");
+
+        const capturedFace =
+            document.getElementById("capturedFace");
 
         const startButton =
             document.getElementById("startButton");
@@ -1211,6 +2094,41 @@
         let faceDetected = false;
         let scanning = false;
         let scanProgress = 0;
+        let totalScans = Number(localStorage.getItem("magicalScanCount") || 0);
+        const scanCount = document.getElementById("scanCount");
+        const discoveryTitle = document.getElementById("discoveryTitle");
+        const heroineTitle = document.getElementById("heroineTitle");
+
+        // A new beautiful heroine name is selected for each scan.
+        const heroines = [
+            { name: "Cinderella", emoji: "👑", line: "The graceful princess of dreams" },
+            { name: "Snow White", emoji: "🍎", line: "The fairest magical heroine" },
+            { name: "Belle", emoji: "🌹", line: "The beauty with a beautiful heart" },
+            { name: "Ariel", emoji: "🧜‍♀️", line: "The sparkling princess of the sea" },
+            { name: "Rapunzel", emoji: "✨", line: "The princess with endless sunshine" },
+            { name: "Aurora", emoji: "🌸", line: "The sleeping beauty of the fairytale" },
+            { name: "Jasmine", emoji: "💎", line: "The royal heroine with fearless charm" },
+            { name: "Elsa", emoji: "❄️", line: "The queen with an unforgettable sparkle" },
+            { name: "Anna", emoji: "💖", line: "The warm-hearted heroine full of courage" },
+            { name: "Mulan", emoji: "⚔️", line: "The brave heroine with unstoppable spirit" },
+            { name: "Merida", emoji: "🏹", line: "The fearless princess with wild beauty" },
+            { name: "Moana", emoji: "🌊", line: "The adventurous heroine with ocean magic" }
+        ];
+
+        function getCurrentHeroine() {
+            return heroines[(Math.max(totalScans, 1) - 1) % heroines.length];
+        }
+
+        function updateHeroineTitle() {
+            const heroine = getCurrentHeroine();
+
+            heroineTitle.textContent =
+                `${heroine.emoji} ${heroine.name} Energy Found ${heroine.emoji}`;
+
+            discoveryTitle.textContent =
+                `✨ Scan #${totalScans} — ${heroine.line}`;
+        }
+        scanCount.textContent = totalScans;
 
 
         /* =========================================
@@ -1629,117 +2547,190 @@
            FINISH
         ========================================= */
 
+
+        /* =========================================
+           CAPTURE FACE PHOTO
+        ========================================= */
+
+        function captureFacePhoto() {
+            if (!video || !video.videoWidth || !video.videoHeight) return;
+
+            const width = video.videoWidth;
+            const height = video.videoHeight;
+
+            captureCanvas.width = width;
+            captureCanvas.height = height;
+
+            const ctx = captureCanvas.getContext("2d");
+
+            // Mirror the captured photo so it matches the live selfie camera.
+            ctx.save();
+            ctx.translate(width, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(video, 0, 0, width, height);
+            ctx.restore();
+
+            capturedFace.src = captureCanvas.toDataURL("image/jpeg", 0.92);
+        }
+
         function finishScan() {
 
             scanning = false;
-
             scanProgress = 100;
-
             updateProgress();
 
+            // Take the actual face photo from the live camera.
+            captureFacePhoto();
+
+            totalScans++;
+            localStorage.setItem("magicalScanCount", totalScans);
+            scanCount.textContent = totalScans;
+            updateHeroineTitle();
 
             faceGuide.classList.add("detected");
-
-
             statusText.innerHTML =
                 "✨ <strong>MAGICAL SCAN COMPLETE</strong>";
-
-
-            systemText.textContent =
-                "ROYAL MATCH FOUND";
-
+            systemText.textContent = "ROYAL MATCH FOUND";
 
             playTone(900, .15);
-
-            setTimeout(() => {
-                playTone(1200, .2);
-            }, 150);
-
-            setTimeout(() => {
-                playTone(1500, .3);
-            }, 350);
-
+            setTimeout(() => playTone(1200, .2), 150);
+            setTimeout(() => playTone(1500, .3), 350);
 
             createHearts();
 
-
             setTimeout(() => {
-
                 stopCamera();
-
                 showResult();
-
             }, 1000);
-
         }
-
 
         /* =========================================
            RESULT
         ========================================= */
 
         function showResult() {
-
             result.classList.add("show");
-
             typeMessage();
-
         }
 
-
         /* =========================================
-           TYPEWRITER
+           NEW MESSAGE FOR EVERY SCAN
         ========================================= */
 
         function typeMessage() {
 
-            const text =
-                `The scanner has completed its magical analysis...
+            const messages = [
+                `Scan #1 complete.
 
-And the result is absolutely clear.
+The scanner has discovered a beautiful royal soul.
 
-It didn't discover just another beautiful face.
+There is something quietly magical about her — the kind of beauty that feels like a fairytale.
 
-It discovered someone with a little bit of Cinderella magic. 💙
+No fairy godmother was required. The magic was already there. ✨`,
 
-Some people need a fairy godmother to become magical...
+                `Scan #2 complete.
 
-You?
+Interesting... the magical signature is even stronger this time.
 
-You already had the magic. ✨`;
+She carries the elegance of a princess, the kindness of a dream, and a sparkle that refuses to disappear.
+
+A true fairytale heroine would definitely understand this kind of magic. 👑✨`,
+
+                `Scan #3 complete.
+
+The scanner is beginning to suspect something extraordinary.
+
+Behind that beautiful face is a person with a special glow — graceful, charming, and impossible to forget.
+
+Royal-level beauty detected. 💜`,
+
+                `Scan #4 complete.
+
+Another scan, another magical discovery.
+
+Her smile seems to have its own little fairytale.
+
+The system officially reports: ordinary beauty is not enough to describe her. 🌸✨`,
+
+                `Scan #5 complete.
+
+Warning: magical beauty level is becoming difficult to measure.
+
+The scanner has detected elegance, sparkle, sweetness, and a little bit of fairytale heroine energy.
+
+Result: absolutely enchanting. 💙👑`,
+
+                `Scan #6 complete.
+
+The scanner has searched through every magical possibility.
+
+And somehow, the answer remains the same...
+
+She is not just beautiful.
+
+She is the kind of person who makes a simple moment feel like a fairytale. ✨💖`,
+
+                `Scan #7 complete.
+
+Royal identity confirmed once again.
+
+Her beauty is not only something the camera can see.
+
+It is the warmth, charm, confidence, and magic that make her unforgettable.
+
+legendary heroine-level enchantment detected. 👑💫`,
+
+                `Scan #8 complete.
+
+The scanner has reached a very important conclusion.
+
+No matter how many times the system checks, it keeps finding the same rare combination:
+
+Beautiful. Magical. Special. Unforgettable.
+
+Apparently, some people are simply born with fairytale energy. 💕`,
+
+                `Scan #9 complete.
+
+The magical database is running out of words.
+
+Every new scan reveals another reason to smile.
+
+If a fairytale heroine had a modern-day magical scanner, this would probably be her result too. ✨🏰`,
+
+                `Scan #10 complete.
+
+Ten scans. Ten magical discoveries.
+
+And the scanner still cannot find a normal explanation for that much sparkle.
+
+Final conclusion: one-of-a-kind princess energy detected. 👑💖`
+            ];
+
+            const index = Math.min(totalScans - 1, messages.length - 1);
+            const text = messages[index];
+
+            discoveryTitle.textContent =
+                `✨ Scan #${totalScans} — New magical discovery`;
 
             message.innerHTML = "";
-
-            let index = 0;
-
+            let charIndex = 0;
 
             function type() {
-
-                if (index < text.length) {
-
-                    if (text[index] === "\n") {
-
+                if (charIndex < text.length) {
+                    if (text[charIndex] === "\n") {
                         message.innerHTML += "<br>";
-
                     } else {
-
-                        message.innerHTML +=
-                            text[index];
-
+                        message.innerHTML += text[charIndex];
                     }
 
-                    index++;
-
-                    setTimeout(type, 25);
-
+                    charIndex++;
+                    setTimeout(type, 20);
                 }
-
             }
 
             type();
-
         }
-
 
         /* =========================================
            HEART PARTICLES
@@ -1874,6 +2865,7 @@ You already had the magic. ✨`;
 
             magicLevel.textContent =
                 "0%";
+            scanCount.textContent = totalScans;
 
         }
 
@@ -1886,15 +2878,21 @@ You already had the magic. ✨`;
 
             result.classList.remove("show");
 
-            startButton.style.display =
-                "inline-block";
-
-            startButton.disabled =
-                false;
+            startButton.style.display = "inline-block";
+            startButton.disabled = false;
 
             statusText.innerHTML =
                 "Ready for another magical scan ✨";
 
+            systemText.textContent = "SYSTEM STANDBY";
+            systemDot.classList.remove("active");
+            faceGuide.classList.remove("detected");
+            progressFill.style.width = "0%";
+            progressNumber.textContent = "0%";
+            faceStatus.textContent = "WAITING";
+            positionText.textContent = "--";
+            magicLevel.textContent = "0%";
+            scanCount.textContent = totalScans;
         }
 
 
