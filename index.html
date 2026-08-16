@@ -579,8 +579,10 @@
         .heroine-photo-frame {
             position: relative;
 
-            width: min(300px, 80vw);
-            height: 230px;
+            /* Horizontal 600x400 image ratio */
+            width: min(400px, 88vw);
+            aspect-ratio: 3 / 2;
+            height: auto;
 
             margin: auto;
 
@@ -598,8 +600,8 @@
         }
 
         /*
-    ALL 12 HEROINE IMAGES ARE DIRECTLY
-    ADDED USING NORMAL HTML <img> TAGS.
+    ALL 12 HEROINE IMAGES ARE 600x400 HORIZONTAL
+    FACE-FOCUSED IMAGES USING NORMAL HTML <img> TAGS.
 
     Change the file names here if needed.
 */
@@ -827,7 +829,9 @@
             }
 
             .heroine-photo-frame {
-                height: 210px;
+                width: min(92vw, 360px);
+                aspect-ratio: 3 / 2;
+                height: auto;
             }
 
             .crown {
@@ -857,7 +861,9 @@
             }
 
             .heroine-photo-frame {
-                height: 190px;
+                width: 92vw;
+                aspect-ratio: 3 / 2;
+                height: auto;
             }
         }
     </style>
@@ -1060,63 +1066,61 @@
 
                     <!-- 1. CINDERELLA -->
 
-                    <img id="cinderellaImage" class="heroine-image" src="img/bfdc724276a5c59d8303af967d981614.jpg"
+                    <img id="cinderellaImage" class="heroine-image" src="img/cinderlla_face_horizontal_600x400.jpg"
                         alt="Cinderella">
 
 
                     <!-- 2. SNOW WHITE -->
 
-                    <img id="snowWhiteImage" class="heroine-image" src="img/snow white.jpg" alt="Snow White">
+                    <img id="snowWhiteImage" class="heroine-image" src="img/snow white_face_horizontal_600x400.jpg" alt="Snow White">
 
 
                     <!-- 3. BELLE -->
 
-                    <img id="belleImage" class="heroine-image" src="img/belle.png" alt="Belle">
+                    <img id="belleImage" class="heroine-image" src="img/belle_face_horizontal_600x400.jpg alt="Belle">
 
 
                     <!-- 4. ARIEL -->
 
-                    <img id="arielImage" class="heroine-image" src="img/ariel.jpg" alt="Ariel">
+                    <img id="arielImage" class="heroine-image" src="img/ariel_face_horizontal_600x400.jpg" alt="Ariel">
 
 
                     <!-- 5. RAPUNZEL -->
 
-                    <img id="rapunzelImage" class="heroine-image" src="img/rapunzel.jpg" alt="Rapunzel">
+                    <img id="rapunzelImage" class="heroine-image" src="img/rapunzel_face_horizontal_600x400.jpg" alt="Rapunzel">
 
 
                     <!-- 6. AURORA -->
 
-                    <img id="auroraImage" class="heroine-image" src="img/aurora.jpg" alt="Aurora">
+                    <img id="auroraImage" class="heroine-image" src="img/aurora_face_horizontal_600x400.jpg" alt="Aurora">
 
 
                     <!-- 7. JASMINE -->
 
-                    <img id="jasmineImage" class="heroine-image" src="img/jasmine.jpg" alt="Jasmine">
+                    <img id="jasmineImage" class="heroine-image" src="img/jasmine_face_horizontal_600x400.jpg" alt="Jasmine">
 
 
                     <!-- 8. ELSA -->
 
-                    <img id="elsaImage" class="heroine-image" src="img/elsa.jpg" alt="Elsa">
+                    <img id="elsaImage" class="heroine-image" src="img/elsa_face_horizontal_600x400.jpg" alt="Elsa">
 
 
-                    <!-- 9. ANNA -->
 
-                    <img id="annaImage" class="heroine-image" src="img/anna.jpg" alt="Anna">
 
 
                     <!-- 10. MULAN -->
 
-                    <img id="mulanImage" class="heroine-image" src="img/mulan.jpg" alt="Mulan">
+                    <img id="mulanImage" class="heroine-image" src="img/mulan_face_horizontal_600x400.jpg" alt="Mulan">
 
 
                     <!-- 11. MERIDA -->
 
-                    <img id="meridaImage" class="heroine-image" src="img/merida.jpg" alt="Merida">
+                    <img id="meridaImage" class="heroine-image" src="img/merida_face_horizontal_600x400.jpg" alt="Merida">
 
 
                     <!-- 12. MOANA -->
 
-                    <img id="moanaImage" class="heroine-image" src="img/mona.jpg" alt="Moana">
+                    <img id="moanaImage" class="heroine-image" src="img/mona_face_horizontal_600x400.jpg" alt="Moana">
 
                 </div>
 
